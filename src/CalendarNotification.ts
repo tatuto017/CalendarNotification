@@ -9,15 +9,17 @@ export default class CalendarNotification {
     }
 
     public createTrigger(hour : number) {
+        let funcname : string;
         ScriptApp.getProjectTriggers().forEach(trigger => {
-            if (trigger.getHandlerFunction() == "notice" || trigger.getHandlerFunction() == "removeReminders") {
-              ScriptApp.deleteTrigger(trigger);
+            funcname = trigger.getHandlerFunction();
+            if ( ['notice', 'removeReminders'].some(name => name == funcname) ) {
+                ScriptApp.deleteTrigger(trigger);
             }
         });
         
-        ScriptApp.newTrigger("notice").timeBased().atHour(hour).everyDays(1).create();
+        ScriptApp.newTrigger('notice').timeBased().atHour(hour).everyDays(1).create();
         hour = hour == 0 ? 23 : hour - 1;
-        ScriptApp.newTrigger("removeReminders").timeBased().atHour(hour).everyDays(1).create();
+        ScriptApp.newTrigger('removeReminders').timeBased().atHour(hour).everyDays(1).create();
     }
 
     public notice() {
