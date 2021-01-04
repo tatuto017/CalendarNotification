@@ -17,13 +17,14 @@ export default {
   // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: [ 'src/**/*.ts' ],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  // Local Setthing !!
+  coverageDirectory: "/mnt/z/coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -66,7 +67,8 @@ export default {
     },
     PropertiesService: {},
     CalendarApp: {},
-    UrlFetchApp: {}
+    UrlFetchApp : {},
+    JSON : {}
   },
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
